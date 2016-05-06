@@ -1,0 +1,13 @@
+#tuning {
+    background: white;
+    width: 50vw;
+    height: 80vh;
+    bottom: 0;
+    left: 0;
+}
+#tuning div {
+    margin: 20px 0;
+}
+#tuning p {
+    margin-bottom: 10px;
+}
