@@ -38,33 +38,39 @@
             } else { // Just use a text if there's no better manipulation method
                 input.type = 'text';
             }
-            input.onchange = function() {
-                switch (input.type) {
-                    case 'checkbox':
-                        NetworkTables.setValue(key, input.checked);
-                        break;
-                    case 'number':
-                        NetworkTables.setValue(key, parseInt(input.value));
-                        break;
-                    case 'text':
-                        NetworkTables.setValue(key, input.value);
-                        break;
-                }
-
-                console.log(NetworkTables.getValue(key));
-            };
-            div.appendChild(input);
+            // Create listener for value of input being modified
+			input.onchange = function() {
+				switch (input.type) { // Figure out how to pass data based on data type
+					case 'checkbox':
+						// For booleans, send bool of whether or not checkbox is checked
+						NetworkTables.setValue(key, input.checked);
+						break;
+					case 'number':
+                        // For number values, send value of input as an int.
+						NetworkTables.setValue(key, parseInt(input.value));
+						break;
+					case 'text':
+                        // For normal text values, just send the value.
+						NetworkTables.setValue(key, input.value);
+						break;
+				}
+			};
+            // Put the input into the div.
+			div.appendChild(input);
+		}
+	} else { // If the value is new
+        // Find already-existing input for changing this variable
+		var oldInput = document.getElementsByName(propName)[0];
+		if (oldInput) { // If there is one (there should be, unless something is wrong)
+			if (oldInput.type === 'checkbox') { // Figure out what data type it is and update it in the list
+				oldInput.checked = value;
+			} else {
+				oldInput.value = value;
+			}
+		} else {
+            console.log('Error: Non-new variable ' + propName + ' not present in tuning list!');
         }
-    } else {
-        var oldInput = document.getElementsByName(propName)[0];
-        if (oldInput) {
-            if (oldInput.type === 'checkbox') {
-                oldInput.checked = value;
-            } else {
-                oldInput.value = value;
-            }
-        }
-    }
+	}
 
 // End section
 
