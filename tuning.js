@@ -1,10 +1,14 @@
 // This should be added inside the definition of the 'ui' object at the starting of ui.js.
 
-        ,
-        tuning: {
-            list: document.getElementById('tuning'),
-            button: document.getElementById('tuningButton')
-        }
+    ,
+    tuning: {
+        list: document.getElementById('tuning'),
+        button: document.getElementById('tuningButton'),
+        name: document.getElementById('name'),
+        value: document.getElementById('value'),
+		set: document.getElementById('set'),
+		get: document.getElementById('get')
+    }
 
 // End section
 
@@ -83,6 +87,16 @@ ui.tuning.button.onclick = function() {
 	} else {
 		ui.tuning.list.style.display = 'none';
 	}
+};
+
+// Manages get and set buttons at the top of the tuning pane
+ui.tuning.set.onclick = function() {
+    if (ui.tuning.name.value && ui.tuning.value.value) { // Make sure the inputs have content
+        NetworkTables.setValue(ui.tuning.name.value, ui.tuning.value.value);
+    }
+};
+ui.tuning.get.onclick = function() {
+	ui.tuning.value.value = NetworkTables.getValue(ui.tuning.name.value);
 };
 
 // End section
