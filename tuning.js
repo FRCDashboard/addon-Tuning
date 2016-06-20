@@ -16,6 +16,8 @@
 
 // Place this after the huge switch statement with all the NetworkTables variables
 
+    // The following code manages tuning section of the interface.
+    // This section displays a list of all NetworkTables variables (that start with /SmartDashboard/) and allows you to directly manipulate them.
     var propName = key.substring(16, key.length);
     // Check if value is new, starts with /SmartDashboard/, and doesn't have a spot on the list yet
     if (isNew && !document.getElementsByName(propName)[0]) {
