@@ -94,7 +94,7 @@ ui.tuning.button.onclick = function() {
 // Manages get and set buttons at the top of the tuning pane
 ui.tuning.set.onclick = function() {
     if (ui.tuning.name.value && ui.tuning.value.value) { // Make sure the inputs have content
-        NetworkTables.setValue(ui.tuning.name.value, ui.tuning.value.value);
+        NetworkTables.setValue('/SmartDashboard/' + ui.tuning.name.value, ui.tuning.value.value);
     }
 };
 ui.tuning.get.onclick = function() {
