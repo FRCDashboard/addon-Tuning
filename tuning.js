@@ -3,7 +3,7 @@
     ,
     tuning: {
         list: document.getElementById('tuning'),
-        button: document.getElementById('tuningButton'),
+        button: document.getElementById('tuning-button'),
         name: document.getElementById('name'),
         value: document.getElementById('value'),
 		set: document.getElementById('set'),

@@ -1,5 +1,4 @@
 #tuning {
-    background: white;
     width: 50vw;
     height: 80vh;
     bottom: 0;
@@ -10,4 +9,8 @@
 }
 #tuning p {
     margin-bottom: 10px;
+}
+input[type="text"],
+input[type="number"] {
+    padding: .5em;
 }
